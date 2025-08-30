@@ -231,6 +231,45 @@
             color: #2d3748;
         }
         
+        /* Video Section */
+        .video-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            background: #000;
+        }
+        
+        .product-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 30px;
+        }
+        
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+        }
+        
         /* Product Gallery Section */
         .product-gallery {
             padding: 100px 0;
@@ -748,6 +787,42 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">See Pup Sauce in Action</h2>
+                <p class="section-subtitle">Watch how easy it is to transform your dog's mealtime</p>
+            </div>
+            
+            <div class="video-container">
+                <video 
+                    class="product-video" 
+                    autoplay 
+                    muted 
+                    loop 
+                    playsinline
+                    poster="./images/video-thumbnail.jpg"
+                >
+                    <source src="./assets/pup-sauce-demo.mp4" type="video/mp4">
+                    <source src="./assets/pup-sauce-demo.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <!-- Alternative: YouTube/Vimeo embed (uncomment and replace VIDEO_ID) -->
+                <!--
+                <div class="video-embed">
+                    <iframe 
+                        src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=YOUR_VIDEO_ID" 
+                        frameborder="0" 
+                        allow="autoplay; encrypted-media" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                -->
             </div>
         </div>
     </section>
