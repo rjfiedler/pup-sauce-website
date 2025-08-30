@@ -1,1 +1,863 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pup Sauce - Premium Nutritional Condiments for Dogs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #f97316;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #1a202c, #2d3748);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #f97316;
+            padding: 16px 32px;
+            border: 2px solid #f97316;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .btn-secondary:hover {
+            background: #f97316;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f97316;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .product-showcase {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            transform: perspective(1000px) rotateY(-5deg);
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            width: 200px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 180px;
+            background: #f7fafc;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            color: #2d3748;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .feature-card {
+            background: #f7fafc;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .feature-description {
+            color: #718096;
+            line-height: 1.7;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            position: relative;
+        }
+        
+        .benefits::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .benefits-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .benefits-list {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+        
+        .benefit-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-content p {
+            color: #a0aec0;
+            line-height: 1.6;
+        }
+        
+        .benefits-visual {
+            text-align: center;
+        }
+        
+        .benefits-image {
+            width: 300px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: #f7fafc;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+        }
+        
+        .package-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #f97316;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-description {
+            color: #718096;
+            margin-bottom: 2rem;
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .package-features li {
+            padding: 0.5rem 0;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .package-features li::before {
+            content: '🐾';
+            font-size: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #f97316;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f97316;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: #f97316;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #2d3748;
+            padding-top: 2rem;
+            color: #718096;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-showcase {
+                flex-direction: column;
+                align-items: center;
+                transform: none;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">🐕 Pup Sauce</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            <a href="#order" class="cta-button">Order Now</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in-up">
+                    <h1>Premium Nutrition Your Dog Will Actually Love</h1>
+                    <p>Transform mealtime with Pup Sauce - the delicious nutritional condiment that supports heart, joint, liver, skin & coat health in every single-serve packet.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#order" class="btn-primary">Shop Now - $29.99</a>
+                        <a href="#benefits" class="btn-secondary">Learn More</a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">24</div>
+                            <div class="stat-label">Servings per Box</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Delicious Flavors</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Health Benefits</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="product-showcase floating">
+                        <div class="product-card">
+                            <div class="product-image" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">🤠</div>
+                            <div class="product-name">Ranchero</div>
+                        </div>
+                        <div class="product-card" style="margin-top: 2rem;">
+                            <div class="product-image" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">🍖</div>
+                            <div class="product-name">Barbeque</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image" style="background: linear-gradient(135deg, #ef4444, #dc2626);">🍜</div>
+                            <div class="product-name">Miso</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Why Dogs Love Pup Sauce</h2>
+                <p class="section-subtitle">Every packet is packed with premium ingredients and designed for easy serving - just squeeze and serve!</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3 class="feature-title">Single-Serve Convenience</h3>
+                    <p class="feature-description">Perfect 1.5 fl oz portions for 40lb dogs. No measuring, no mess - just squeeze and serve over dry food.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🥩</div>
+                    <h3 class="feature-title">Premium Ingredients</h3>
+                    <p class="feature-description">Made with real beef tallow, bone broth, and collagen. No artificial colors or preservatives.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Targeted Nutrition</h3>
+                    <p class="feature-description">Supports heart, joint, liver, skin & coat health with omega-3s, glucosamine, and essential vitamins.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">😋</div>
+                    <h3 class="feature-title">Three Amazing Flavors</h3>
+                    <p class="feature-description">Ranchero, Barbeque, and Miso flavors keep mealtime exciting and ensure your dog never gets bored.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Fresh & Safe</h3>
+                    <p class="feature-description">Use within 4 days of opening. Refrigerate after opening to maintain freshness and quality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3 class="feature-title">Complete Nutrition</h3>
+                    <p class="feature-description">Enhanced with calcium, phosphorous, and vitamins A, B, C, and E for comprehensive health support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-grid">
+                    <div class="benefits-list">
+                        <div class="section-header" style="text-align: left; margin-bottom: 3rem;">
+                            <h2 class="section-title" style="color: white;">Health Benefits Your Dog Deserves</h2>
+                            <p class="section-subtitle" style="color: #a0aec0;">Each packet delivers targeted nutrition to support your dog's overall wellness and vitality.</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">❤️</div>
+                            <div class="benefit-content">
+                                <h3>Heart Health</h3>
+                                <p>Omega-3 fatty acids and essential nutrients support cardiovascular function and circulation.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🦴</div>
+                            <div class="benefit-content">
+                                <h3>Joint Support</h3>
+                                <p>Glucosamine and chondroitin help maintain healthy joints and mobility as your dog ages.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🫀</div>
+                            <div class="benefit-content">
+                                <h3>Liver Function</h3>
+                                <p>Targeted nutrients support healthy liver function and natural detoxification processes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✨</div>
+                            <div class="benefit-content">
+                                <h3>Skin & Coat</h3>
+                                <p>Premium collagen and vitamins promote a shiny coat and healthy skin from the inside out.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="benefits-visual">
+                        <div class="benefits-image floating">
+                            🐕‍🦺
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">One box, 24 servings, endless tail wags</p>
+            </div>
+            
+            <div class="pricing-card">
+                <h3 class="package-title">Pup Sauce Variety Pack</h3>
+                <div class="price">$29.99</div>
+                <p class="price-description">24 single-serve packets • Mixed flavors</p>
+                
+                <ul class="package-features">
+                    <li>8 Ranchero flavor packets</li>
+                    <li>8 Barbeque flavor packets</li>
+                    <li>8 Miso flavor packets</li>
+                    <li>Perfect for 40lb dogs (1 packet daily)</li>
+                    <li>24-day supply per box</li>
+                    <li>Premium ingredients & nutrition</li>
+                    <li>Free shipping on orders over $50</li>
+                </ul>
+                
+                <a href="#order" class="btn-primary" style="width: 100%; text-align: center; display: inline-block;">Order Your Box Today</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content fade-in-up">
+                <h2>Ready to Transform Mealtime?</h2>
+                <p>Join thousands of happy dogs already enjoying Pup Sauce. Order now and see the difference premium nutrition makes!</p>
+                <a href="https://pupsauce.shop" class="btn-white">Shop Now at pupsauce.shop</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Questions about Pup Sauce?</p>
+                    <p>Visit pupsauce.shop</p>
+                    <p>More tail wags await!</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product Info</h3>
+                    <p>Manufactured by Company City, ST 99345</p>
+                    <p>Distributed by DogVite LLC Austin, TX 78723</p>
+                    <p>For dog use only</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Storage</h3>
+                    <p>Use within 4 days of opening</p>
+                    <p>Refrigerate after opening</p>
+                    <p>One packet per 40lb dog daily</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pup Sauce. All rights reserved. Made with ❤️ for dogs everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .benefit-item, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
